@@ -1,23 +1,25 @@
-const http = require('http');
-const fs = require('fs');
-const route = {
-    '/': './index.html',
-    '/index': './index.html',
-    '/about': './about.html',
-}
+// 1. Importar Express
+const express = require('express');
 
-const app = http.createServer((req, res) => {
-    if (req.url !== '/favicon.ico') {
-        fs.readFile(route[req.url] || './404.html', 'utf-8', (err, html) => {
-            if (err) {
-                res.end('Hubo un error en la lectura del archivo');
-            } else {
-                res.end(html);
-            }
-        });
-    }
+// 2. Crear una instancia de un servidor
+const app = express();
+
+// 3. ¿?
+
+// 4. Definición de las 'rutas'
+app.get('/', function (request, response) {
+    response.sendFile(__dirname + '/index.html');
 });
 
-app.listen(8080, () => {
+app.get('/about', function (request, response) {
+    response.sendFile(__dirname + '/about.html');
+});
+
+app.get('*', function (request, response) {
+    response.sendFile(__dirname + '/404.html');
+});
+
+// 5. Escuchar un puerto
+app.listen(8080, function () {
     console.log('> Servidor escuchando el puerto 8080');
 });
