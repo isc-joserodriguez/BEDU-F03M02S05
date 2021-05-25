@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/joanrodriguezhe/BEDU_F03M02S05#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "prime-functions": "^1.2.2"
   }
 }
